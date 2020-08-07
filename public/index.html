@@ -3,110 +3,136 @@
   <head>
     <meta charset="utf-8" />
     <title>Annotorious OpenSeadragon Example</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+      integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
+      crossorigin="anonymous"
+    />
     <style>
-      html, body {
-        margin:0;
-        padding:0;
-        background-color:#e2e2e2;
-        height:100%;
-        font-family:Lato;
-        line-height:160%;
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #e2e2e2;
+        height: 100%;
+        font-family: Lato;
+        line-height: 160%;
       }
-  
+
       .column {
-        max-width:700px;
-        padding:20px;
-        margin:0 auto;
-        background-color:#fff;
-        height:100%;
-        box-sizing:border-box;
+        max-width: 700px;
+        padding: 20px;
+        margin: 0 auto;
+        background-color: #fff;
+        height: 100%;
+        box-sizing: border-box;
       }
 
       h1 {
-        font-size:21px;
-        font-weight:normal;
-        margin:0;
-        padding:0;
+        font-size: 21px;
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
       }
 
       p.instructions {
-        padding:10px 0 30px 0;
+        padding: 10px 0 30px 0;
       }
 
       .openseadragon-canvas {
-        outline:none;
-        background-color:#efefef !important;
+        outline: none;
+        background-color: #efefef !important;
       }
     </style>
     <script>
-      window.onload = function() {
+      window.onload = function () {
         var viewer = OpenSeadragon({
           id: "openseadragon",
           prefixUrl: "openseadragon/images/",
           tileSources: {
             type: "image",
-            url: "1280px-Hallstatt.jpg"
+            url: "1280px-Hallstatt.jpg",
           },
           gestureSettingsTouch: {
-            pinchRotate: true
-          }
+            pinchRotate: true,
+          },
         });
-        
+
         var anno = OpenSeadragon.Annotorious(viewer, {
-          locale: 'auto'
+          locale: "ja",
+          tagVocabulary: [
+            {
+              label: "Option A",
+              value: "A",
+            },
+            {
+              label: "Option B",
+              value: "B",
+            },
+            {
+              label: "Option C",
+              value: "C",
+            },
+          ],
+          tagPlaceholder: "Enter organ",
+          commentPlaceholder: "Add your review",
         });
 
-        anno.on('selectAnnotation', function(annotation) {
-          console.log('selected', annotation);
+        anno.on("selectAnnotation", function (annotation) {
+          console.log("selected", annotation);
         });
 
-        anno.on('createAnnotation', function(a) {
-          console.log('created', a);
+        anno.on("createAnnotation", function (a) {
+          console.log("created", a);
         });
 
-        anno.on('updateAnnotation', function(annotation, previous) {
-          console.log('updated', previous, 'with', annotation);
+        anno.on("updateAnnotation", function (annotation, previous) {
+          console.log("updated", previous, "with", annotation);
         });
 
-        anno.on('deleteAnnotation', function(annotation) {
-          console.log('deleted', annotation);
+        anno.on("deleteAnnotation", function (annotation) {
+          console.log("deleted", annotation);
         });
 
-        anno.on('mouseEnterAnnotation', function(annotation) {
-          console.log('mouseEnter', annotation);
+        anno.on("mouseEnterAnnotation", function (annotation) {
+          console.log("mouseEnter", annotation);
         });
 
-        anno.on('mouseLeaveAnnotation', function(annotation) {
-          console.log('mouseLeave', annotation);
+        anno.on("mouseLeaveAnnotation", function (annotation) {
+          console.log("mouseLeave", annotation);
         });
 
-        anno.loadAnnotations('annotations.w3c.json');
+        anno.loadAnnotations("annotations.w3c.json");
 
-        var toolToggle = document.getElementById('current-tool');
-        toolToggle.addEventListener('click', function() {
-          if (toolToggle.innerHTML == 'RECTANGLE') {
-            toolToggle.innerHTML = 'POLYGON';
-            anno.setDrawingTool('polygon');
+        var toolToggle = document.getElementById("current-tool");
+        toolToggle.addEventListener("click", function () {
+          if (toolToggle.innerHTML == "RECTANGLE") {
+            toolToggle.innerHTML = "POLYGON";
+            anno.setDrawingTool("polygon");
           } else {
-            toolToggle.innerHTML = 'RECTANGLE';
-            anno.setDrawingTool('rect');
+            toolToggle.innerHTML = "RECTANGLE";
+            anno.setDrawingTool("rect");
           }
         });
 
-        var toolToggle = document.getElementById('enable-draw');
-        toolToggle.addEventListener('click', function() {
+        var toolToggle = document.getElementById("enable-draw");
+        toolToggle.addEventListener("click", function () {
           anno.setDrawingEnabled(true);
         });
-      }
+      };
     </script>
   </head>
   <body>
     <div class="column">
       <h1>Annotorious | OpenSeadragon Example</h1>
       <p class="instructions">
-        Click the annotation to edit. Hold <strong>SHIFT</strong> while clicking and 
-        dragging the mouse to create a new annotation. 
+        Click the annotation to edit. Hold <strong>SHIFT</strong> while clicking
+        and dragging the mouse to create a new annotation.
       </p>
       <p>
         <button id="current-tool">RECTANGLE</button>
@@ -115,5 +141,20 @@
       <div id="openseadragon" style="width: 640px; height: 480px;"></div>
     </div>
     <script src="openseadragon/openseadragon.2.4.2.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+      integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

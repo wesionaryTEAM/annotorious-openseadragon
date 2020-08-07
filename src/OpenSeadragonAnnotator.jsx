@@ -118,10 +118,8 @@ export default class OpenSeadragonAnnotator extends Component {
           onAnnotationUpdated={this.onCreateOrUpdateAnnotation('onAnnotationUpdated')}
           onAnnotationDeleted={this.onDeleteAnnotation}
           onCancel={this.onCancelAnnotation}>
-
-          <Editor.CommentWidget />
-          <Editor.TagWidget vocabulary={this.props.tagVocabulary} />
-
+          <Editor.TagWidget vocabulary={this.props.tagVocabulary} placeholder={this.props.tagPlaceholder}/>
+          <Editor.CommentWidget placeholder={this.props.commentPlaceholder}/>
         </Editor>
       )
     )
