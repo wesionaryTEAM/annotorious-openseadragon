@@ -64,7 +64,7 @@ export default class OSDAnnotationLayer extends EventEmitter {
 
     // Keep tracker disabled until Shift is held
     document.addEventListener('keydown', evt => {
-      if (evt.which === 16) // Shift
+      if (evt.which === 16 && !this.tools.current.isDrawing) // Shift
         this.mouseTracker.setTracking(true);
     });
 

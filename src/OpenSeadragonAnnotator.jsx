@@ -79,8 +79,10 @@ export default class OpenSeadragonAnnotator extends Component {
   removeAnnotation = annotation =>
     this.annotationLayer.removeAnnotation(annotation.clone());
 
-  setAnnotations = annotations =>
+  setAnnotations = annotations =>{
     this.annotationLayer.init(annotations.map(a => a.clone()));
+    console.log('checking set annotations')
+  }
 
   getAnnotations = () =>
     this.annotationLayer.getAnnotations().map(a => a.clone());
