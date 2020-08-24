@@ -32,6 +32,7 @@ class OSDAnnotorious {
         wrapperEl={viewerEl}
         readOnly={config.readOnly} 
         tagVocabulary={config.tagVocabulary}
+        observationOptions={config.observationOptions}
         tagPlaceholder={config.tagPlaceholder}
         commentPlaceholder={config.commentPlaceholder}
         maxCommentLength={config.maxCommentLength}
