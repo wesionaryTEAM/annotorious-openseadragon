@@ -81,12 +81,12 @@ export default class OSDAnnotationLayer extends EventEmitter {
     shape.annotation = annotation;
 
     shape.addEventListener('mouseenter', evt => {
-      if (!this.tools.current.isDrawing)
+      if (!this.tools || (this.tools && !this.tools.current.isDrawing))
         this.emit('mouseEnterAnnotation', annotation, evt);
     });
 
     shape.addEventListener('mouseleave', evt => {
-      if (!this.tools.current.isDrawing)
+      if (!this.tools || (this.tools && !this.tools.current.isDrawing))
         this.emit('mouseLeaveAnnotation', annotation, evt);
     });
 

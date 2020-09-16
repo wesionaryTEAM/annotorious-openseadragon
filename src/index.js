@@ -30,7 +30,6 @@ class OSDAnnotorious {
         ref={this._app}
         viewer={viewer} 
         wrapperEl={viewerEl}
-        readOnly={config.readOnly} 
         tagVocabulary={config.tagVocabulary}
         observationOptions={config.observationOptions}
         tagPlaceholder={config.tagPlaceholder}
