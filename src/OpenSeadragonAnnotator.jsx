@@ -81,7 +81,6 @@ export default class OpenSeadragonAnnotator extends Component {
 
   setAnnotations = annotations =>{
     this.annotationLayer.init(annotations.map(a => a.clone()));
-    console.log('checking set annotations')
   }
 
   getAnnotations = () =>
@@ -120,8 +119,8 @@ export default class OpenSeadragonAnnotator extends Component {
           onAnnotationUpdated={this.onCreateOrUpdateAnnotation('onAnnotationUpdated')}
           onAnnotationDeleted={this.onDeleteAnnotation}
           onCancel={this.onCancelAnnotation}>
-          <Editor.TagWidget vocabulary={this.props.tagVocabulary} placeholder={this.props.tagPlaceholder} observationOptions={this.props.observationOptions}/>
-          <Editor.CommentWidget placeholder={this.props.commentPlaceholder} maxCommentLength={this.props.maxCommentLength}/>
+          <Editor.TagWidget vocabulary={this.props.tagVocabulary} placeholder={this.props.tagPlaceholder} observationOptions={this.props.observationOptions} />
+          <Editor.CommentWidget placeholder={this.props.commentPlaceholder} maxCommentLength={this.props.maxCommentLength} />
         </Editor>
       )
     )

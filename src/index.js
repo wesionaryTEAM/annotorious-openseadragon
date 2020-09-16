@@ -36,6 +36,7 @@ class OSDAnnotorious {
         tagPlaceholder={config.tagPlaceholder}
         commentPlaceholder={config.commentPlaceholder}
         maxCommentLength={config.maxCommentLength}
+        readOnly={config.readOnly}
         onAnnotationSelected={this.handleAnnotationSelected}
         onAnnotationCreated={this.handleAnnotationCreated} 
         onAnnotationUpdated={this.handleAnnotationUpdated} 

@@ -189,6 +189,7 @@
           tagPlaceholder: "Enter organ",
           commentPlaceholder: "Add your review",
           maxCommentLength: 30,
+          // readOnly: true,
         });
 
         anno.on("selectAnnotation", function (annotation) {
@@ -246,7 +247,7 @@
         <button id="current-tool">RECTANGLE</button>
         <button id="enable-draw">ENABLE DRAW</button>
       </p>
-      <div id="openseadragon" style="width: 640px; height: 480px;"></div>
+      <div id="openseadragon" style="width: 640px; height: 480px"></div>
     </div>
     <script src="openseadragon/openseadragon.2.4.2.min.js"></script>
   </body>
