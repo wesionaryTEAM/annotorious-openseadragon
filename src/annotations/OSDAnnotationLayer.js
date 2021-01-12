@@ -133,6 +133,8 @@ export default class OSDAnnotationLayer extends EventEmitter {
 
     const rotation = this.viewer.viewport.getRotation();
 
+    // console.log('checking rotation', rotation)
+
     this.g.setAttribute('transform', `translate(${p.x}, ${p.y}) scale(${scale}) rotate(${rotation})`);
 
     if (this.selectedShape)

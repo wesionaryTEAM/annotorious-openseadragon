@@ -45,6 +45,9 @@
     </style>
     <script>
       window.onload = function () {
+
+        let rotation= 0
+
         var viewer = OpenSeadragon({
           id: "openseadragon",
           prefixUrl: "openseadragon/images/",
@@ -56,6 +59,39 @@
             pinchRotate: true,
           },
         });
+
+        const handleRotateLeft = () => {
+          rotation = rotation - 10;
+          viewer.viewport.setRotation(rotation);
+        };
+
+      const handleRotateRight = () => {
+        rotation = rotation + 10;
+        viewer.viewport.setRotation(rotation);
+      };
+
+        let rotateLeft = new OpenSeadragon.Button({
+      tooltip: "Rotate Left",
+      srcRest: "/openseadragon/images/rotateleft_rest.png",
+      srcGroup: "/openseadragon/images/rotateleft_grouphover.png",
+      srcHover: "/openseadragon/images/rotateleft_hover.png",
+      srcDown: "/openseadragon/images/rotateleft_pressed.png",
+      onClick: handleRotateLeft
+    });
+
+    let rotateRight = new OpenSeadragon.Button({
+      tooltip: "Rotate Left",
+      srcRest: "/openseadragon/images/rotateright_rest.png",
+      srcGroup: "/openseadragon/images/rotateright_grouphover.png",
+      srcHover: "/openseadragon/images/rotateright_hover.png",
+      srcDown: "/openseadragon/images/rotateright_pressed.png",
+      onClick: handleRotateRight
+    });
+
+    viewer.buttons.buttons.push(rotateLeft);
+    viewer.buttons.element.appendChild(rotateLeft.element);
+    viewer.buttons.buttons.push(rotateRight);
+    viewer.buttons.element.appendChild(rotateRight.element);
 
         var anno = OpenSeadragon.Annotorious(viewer, {
           locale: "ja",
